@@ -243,7 +243,7 @@ bot.on("photo", async (msg) => {
         await bot.sendPhoto(PAYMENTS_GROUP_ID, fileId, { caption });
       }
 
-      bot.sendMessage(chatId, "✅ To'lov cheki qabul qilindi! Tez orada tekshirib, buyurtmangizni jo'natishni boshlaymiz.");
+      bot.sendMessage(chatId, "📩 Chekingiz qabul qilindi va operatorlarga yuborildi. RAMZIY FAZO orqali to'lovingiz tekshirilgach, buyurtmangiz jo'natiladi.");
     } else {
       const caption =
         `⚠️ TO'LOV CHEKI (mos buyurtma avtomatik topilmadi)\n\n` +
@@ -255,7 +255,7 @@ bot.on("photo", async (msg) => {
         await bot.sendPhoto(PAYMENTS_GROUP_ID, fileId, { caption });
       }
 
-      bot.sendMessage(chatId, "✅ Chekingiz qabul qilindi. Operatorlarimiz tez orada buyurtmangiz bilan bog'lab, tasdiqlashadi.");
+      bot.sendMessage(chatId, "📩 Chekingiz operatorlarga yuborildi. To'lovingizni tekshirib, buyurtmangiz bilan bog'lashadi.");
     }
   } catch (error) {
     console.error("Chekni qayta ishlashda xato:", error.message);
