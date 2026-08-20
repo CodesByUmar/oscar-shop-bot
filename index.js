@@ -231,11 +231,15 @@ bot.on("photo", async (msg) => {
 
       const o = target.data();
       const total = o.totalUZS ? `${Number(o.totalUZS).toLocaleString("uz-UZ")} so'm` : "—";
+      const itemsText = (o.items || [])
+        .map((it) => `  • ${it.name} — ${it.quantity} ${it.unit === "box" ? "karobka" : "dona"}`)
+        .join("\n") || "  —";
       const caption =
         `🧾 YANGI TO'LOV CHEKI\n\n` +
         `🆔 Buyurtma: ${target.id}\n` +
         `👤 Mijoz: ${o.customerName || o.username || "Noma'lum"}\n` +
         `📞 Telefon: ${o.customerPhone || "Noma'lum"}\n` +
+        `📦 Mahsulotlar:\n${itemsText}\n\n` +
         `💰 Summa: ${total}\n` +
         `🆔 Chat ID: ${chatId}`;
 
