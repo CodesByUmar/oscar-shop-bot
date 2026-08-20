@@ -57,7 +57,7 @@ function getWebAppUrl(chatId) {
 
 const mainMenuKeyboard = {
   reply_markup: {
-    keyboard: [["🛍 Do'konga kirish"], ["🆘 Yordam"]],
+    keyboard: [["🛍 Do'konga kirish"], ["💳 To'lov cheki", "🆘 Yordam"]],
     resize_keyboard: true,
   },
 };
@@ -186,6 +186,17 @@ bot.onText(/🆘 Yordam/, (msg) => {
   bot.sendMessage(chatId, "✍️ Savolingizni yoki muammoingizni yozing — operatorlarimiz tez orada javob berishadi.");
 });
 
+// ====================== TO'LOV CHEKI (YO'RIQNOMA) ======================
+bot.onText(/💳 To'lov cheki/, (msg) => {
+  const chatId = msg.chat.id;
+  bot.sendMessage(
+    chatId,
+    "🧾 To'lov chekini yuborish\n\n" +
+      "To'lovni amalga oshirgach, to'lov screenshotini (chekni) shunchaki shu suhbatga rasm qilib yuboring — bot uni avtomatik qabul qilib, buyurtmangizga bog'laydi.\n\n" +
+      "📌 Eslatma: chekni faqat to'lovni amalga oshirgandan KEYIN yuboring. Operatorlarimiz tekshirib, tez orada tasdiqlaydi."
+  );
+});
+
 
 // ====================== TO'LOV CHEKI (RASM) QABUL QILISH ======================
 bot.on("photo", async (msg) => {
@@ -292,7 +303,7 @@ bot.on("message", async (msg) => {
   // --- Filtrlash ---
   if (!text || msg.contact) return;
   if (text.startsWith("/start")) return;
-  if (["🛍 Do'konga kirish", "🆘 Yordam", "⏭ Keyinroq"].includes(text)) return;
+  if (["🛍 Do'konga kirish", "💳 To'lov cheki", "🆘 Yordam", "⏭ Keyinroq"].includes(text)) return;
 
   // --- Yordam so'rovi ---
   const state = userState[chatId];
